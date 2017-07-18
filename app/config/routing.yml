@@ -1,0 +1,8 @@
+medicine_tracker:
+    resource: "@MedicineTrackerBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: @AppBundle/Controller/
+    type:     annotation

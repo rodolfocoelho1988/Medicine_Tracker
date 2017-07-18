@@ -1,0 +1,8 @@
+{% form_theme form 'MedicineTrackerBundle:Form:ayush_test.html.twig' %}
+
+{%- block button_widget -%}
+    {%- if label is empty -%}
+        {% set label = name|humanize %}
+    {%- endif -%}
+    <button type="{{ type|default('button') }}" class="{{class|default(btn-primary)}}" {{ block('button_attributes') }}>{{ label|trans({}, translation_domain) }}</button>
+{%- endblock button_widget -%}

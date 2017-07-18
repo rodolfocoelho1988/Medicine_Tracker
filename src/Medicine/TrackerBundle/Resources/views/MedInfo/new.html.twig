@@ -1,0 +1,11 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+	<div class="container-fluid">
+    	<h1>MedInfo creation</h1>
+    	{{ form(form) }}
+    	<br>
+
+    	<a href="{{ path('patient') }}" class="btn btn-info" role="button"> Back to Patient list</a>
+	</div>
+{% endblock %}

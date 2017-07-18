@@ -1,0 +1,48 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>MedInfo</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Preparedon</th>
+                <td>{{ entity.preparedOn|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Numblisters</th>
+                <td>{{ entity.numBlisters }}</td>
+            </tr>
+            <tr>
+                <th>Deliverypickupdate</th>
+                <td>{{ entity.deliveryPickupDate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Nextduedate</th>
+                <td>{{ entity.nextDueDate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Isactive</th>
+                <td>{{ entity.isActive }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('medinfo') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('medinfo_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <div class="container-fluid">
+        <h1>Patient Information</h1>
+        <h3>Name: {{entity.name}}</h3>
+
+        
+        <table class="table"> <!-- removed this class: record_tables  -->
+            <tbody>
+                <tr>
+                    <th> Prepared On</th>
+                    <th>Number of Blisters</th>
+                    <th> Delivered/ Pick Up Date</th>
+                    <th> Next Due On</th>
+                    <th> Is Active </th>
+                    <th> Edit Entry</th>
+                </tr>
+                {% for i in medicines %}
+                    <tr>
+                        <td>{{i.preparedOn|date("m/d/Y")}}</td>
+                        <td>{{ i.numBlisters }}</td>
+                        <td>{{i.deliveryPickupDate|date("m/d/Y")}}</td>
+                        <td>{{i.nextDueDate|date("m/d/Y")}}</td>
+                        <td>{{i.isActive }}</td>
+                        <td><a href="{{ path('medinfo_edit', { 'id': i.id }) }}" class="btn btn-info" role="button">Edit</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+ 
+
+            <!-- record_actions to unordered list tag-->
+                
+
+        <a href="{{ path('patient') }}" class="btn btn-info" role="button"> Back to the patient list </a>
+                
+        <a href="{{ path('patient_edit', { 'id': entity.id }) }}" class="btn btn-info" role="button">Edit Patient Name </a>
+
+        <a href="{{ path('medinfo_new', { 'id': entity.id }) }}" class="btn btn-info" role="button">Add New Entry </a>
+
+                        <!--{{ form(delete_form) }} <- DELETE FORM-->
+
+                        <!--{{ path('patient_edit', { 'id': entity.id }) }}-->
+
+
+            
+{% endblock %}
