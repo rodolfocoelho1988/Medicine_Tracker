@@ -16,8 +16,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 
 
-
-
 /**
  * Patient controller.
  *
