@@ -259,36 +259,6 @@ class PatientController extends Controller
         ;
     }
 
-
-//------------------------------- MIGHT NOT NEED THIS SECTION -----------------
-
-    /**
-     * Finds the list of Patients with the same name as entered by user
-     *
-     * @Route("/find/byName/{name}", name="patient_search_results")
-     * @Method("GET")
-     * @Template ("MedicineTrackerBundle:Patient:search_results.html.twig")
-     */
-    public function searchresultsAction($name)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $repository = $em->getRepository('MedicineTrackerBundle:Patient');
-        $names = $repository->findByName($name);
-
-
-        if(! $names)
-        {            
-            return array('names'=> $names);
-        }
-
-        return array(
-            'names' => $names,
-        );
-    }
-
-//------------------------------- MIGHT NOT NEED THIS SECTION ----------------- ^^^^^
-
     /**
      * This page will have the search form for finding the patients by name
      *
@@ -331,7 +301,7 @@ class PatientController extends Controller
         ->setAction($this->generateUrl('patient_search'))
         ->setMethod('POST')
         ->add('name', 'text')
-        ->add('search', 'submit', array('label' => 'Search Name'))
+        ->add('search', 'submit', array('label' => 'Search'))
         ->getForm()
         ;
     }
