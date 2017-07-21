@@ -1,48 +1,46 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>MedInfo</h1>
+    <div class="container-fluid">
+        <h1>MedInfo - Patient</h1> 
+        <h2>Name: {{patient_name}}</h2>
 
-    <table class="record_properties">
+
+    <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
+                <th>Prepared On</th>
+                <td>{{ entity.preparedOn|date('Y-m-d') }}</td>
             </tr>
             <tr>
-                <th>Preparedon</th>
-                <td>{{ entity.preparedOn|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Numblisters</th>
+                <th>Number of Blisters</th>
                 <td>{{ entity.numBlisters }}</td>
             </tr>
             <tr>
-                <th>Deliverypickupdate</th>
-                <td>{{ entity.deliveryPickupDate|date('Y-m-d H:i:s') }}</td>
+                <th>Delivery Pick Up Date: </th>
+                <td>{{ entity.deliveryPickupDate|date('Y-m-d') }}</td>
             </tr>
             <tr>
-                <th>Nextduedate</th>
-                <td>{{ entity.nextDueDate|date('Y-m-d H:i:s') }}</td>
+                <th>Next Due Date: </th>
+                <td>{{ entity.nextDueDate|date('Y-m-d') }}</td>
             </tr>
             <tr>
-                <th>Isactive</th>
-                <td>{{ entity.isActive }}</td>
+                <th>Is Active:</th>
+                <td>{{entity.isActive}}</td>
             </tr>
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('medinfo') }}">
-            Back to the list
+
+        <a href="{{ path('patient') }}" class="btn btn-info" role="button">
+            Back to the Patient List
         </a>
-    </li>
-    <li>
-        <a href="{{ path('medinfo_edit', { 'id': entity.id }) }}">
+
+        <a href="{{ path('medinfo_edit', { 'id': entity.id }) }}" class="btn btn-info" role="button">
             Edit
         </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+
+    {# {{ form(delete_form) }} #}
+
+</div>
 {% endblock %}
