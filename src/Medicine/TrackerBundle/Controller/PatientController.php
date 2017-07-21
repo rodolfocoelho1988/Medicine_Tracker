@@ -11,6 +11,9 @@ use Medicine\TrackerBundle\Entity\Patient;
 use Medicine\TrackerBundle\Entity\MedInfo;
 use Medicine\TrackerBundle\Form\PatientType;
 use Doctrine\ORM\EntityRepository;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 
 
 
@@ -119,9 +122,6 @@ class PatientController extends Controller
 
         $entity = $em->getRepository('MedicineTrackerBundle:Patient')->find($id);
 
-        
-
-    
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Patient entity.');
         }
@@ -256,6 +256,83 @@ class PatientController extends Controller
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
+        ;
+    }
+
+
+//------------------------------- MIGHT NOT NEED THIS SECTION -----------------
+
+    /**
+     * Finds the list of Patients with the same name as entered by user
+     *
+     * @Route("/find/byName/{name}", name="patient_search_results")
+     * @Method("GET")
+     * @Template ("MedicineTrackerBundle:Patient:search_results.html.twig")
+     */
+    public function searchresultsAction($name)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $repository = $em->getRepository('MedicineTrackerBundle:Patient');
+        $names = $repository->findByName($name);
+
+
+        if(! $names)
+        {            
+            return array('names'=> $names);
+        }
+
+        return array(
+            'names' => $names,
+        );
+    }
+
+//------------------------------- MIGHT NOT NEED THIS SECTION ----------------- ^^^^^
+
+    /**
+     * This page will have the search form for finding the patients by name
+     *
+     * @Route("/search/display", name="patient_search")
+     * @Template ("MedicineTrackerBundle:Patient:search.html.twig")
+     */
+    public function searchAction(Request $request)
+    {
+        $form   = $this->createSearchForm();
+
+         $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $data = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $repository = $em->getRepository('MedicineTrackerBundle:Patient');
+            $names = $repository->findByName($data['name']);
+
+            if(! $names)
+            {            
+                return $this->render('MedicineTrackerBundle:Patient:search_results.html.twig',array('names'=> $names));
+            }
+
+                return $this->render('MedicineTrackerBundle:Patient:search_results.html.twig',array('names'=> $names));
+        }
+
+        return [ 
+            'search_form'   => $form->createView()
+        ];
+    }
+
+    /**
+    * Creates a simple form to search patients
+    */
+    public function createSearchForm()
+    {
+        return $this->createFormBuilder()
+        ->setAction($this->generateUrl('patient_search'))
+        ->setMethod('POST')
+        ->add('name', 'text')
+        ->add('search', 'submit', array('label' => 'Search Name'))
+        ->getForm()
         ;
     }
 }

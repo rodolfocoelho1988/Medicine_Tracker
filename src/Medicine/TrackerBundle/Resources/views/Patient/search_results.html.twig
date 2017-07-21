@@ -1,0 +1,30 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <div class="container-fluid">
+        <h1>Search Results</h1>
+        <table class="table">
+        	<thead>
+        		<th>Name</th>
+        		<th>isActive</th>
+        		<th>Action</th>
+        	</thead>
+        	<tbody>
+                {% for entity in names%}
+                <tr>
+                    <td>{{entity.name}}</td>
+                    <td>{{entity.isActive}}</td>
+                    <td><a href="{{ path('patient_show', { 'id': entity.id }) }}" class="btn btn-info" role="button">show</a></td>
+                </tr>
+                {% endfor %}
+        	</tbody>
+        </table>
+    </div>
+
+    <div class="container-fluid">
+            <a href="{{ path('patient_search') }}" class="btn btn-info" role="button"> Search again</a>
+    </div>
+
+    {# <a href="{{ path('patient_search', {'name': names.name}) }}" class="btn btn-info" role="button">Find</a> #}
+
+{% endblock %}
