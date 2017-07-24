@@ -16,7 +16,7 @@ class PatientType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('isActive')
+            ->add('isActive', 'checkbox', array('required'=>false))
         ;
     }
     
