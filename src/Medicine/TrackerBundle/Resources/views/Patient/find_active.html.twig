@@ -3,9 +3,9 @@
 {% block body -%}
     <div class="container-fluid">
         {% if isActive == 1 %}
-            <h1 class="page-header">Patient list: isActive</h1>
+            <h1>Patient list<small> non-deleted patients</small></h1>
         {% else %}
-            <h1 class="page-header">Patient list: notActive</h1>
+            <h1>Patient list<small> deleted patients</small></h1>
         {% endif %}
         
 

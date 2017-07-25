@@ -15,7 +15,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 
-
 /**
  * Patient controller.
  *
@@ -363,4 +362,20 @@ class PatientController extends Controller
             'isActive' => 0,
             );
     }
+  
+    /**
+     * Lists all Patient entities who are inactive
+     *
+     * @Route("/findby/manual", name="user_manual")
+     * @Method("GET")
+     * @Template("MedicineTrackerBundle:Patient:user_manual.html.twig")
+     */
+    public function usermanualAction()
+    {
+
+        return array(
+            'User'=>'Manual',
+            );
+    }
+
 }

@@ -2,10 +2,8 @@
 
 {% block body -%}
     <div class="container-fluid">
-        <h1 class="page-header">Patient list: active and inactive</h1>
-        
-
-        <table class="table" > <!-- removed this class: record_tables  -->
+        <h1>Patient list</h1>
+        <table class="table" >
             <thead>
                 <tr>
                     <th>Patient Id</th>
@@ -36,8 +34,5 @@
             </tbody>
         </table>
                 <a href="{{ path('patient_new') }}" class="btn btn-info" role="button">Create a new entry</a>
-                <a href="{{ path('patient_search') }}" class="btn btn-info" role="button">Search</a> 
-                <a href="{{ path('patient_active') }}" class="btn btn-info" role="button">Show Active Patients</a>
-                <a href="{{ path('patient_inactive') }}" class="btn btn-info" role="button">Show inActive Patients</a>
     </div>
 {% endblock %}
