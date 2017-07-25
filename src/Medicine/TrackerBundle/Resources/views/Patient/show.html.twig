@@ -22,7 +22,13 @@
                         <td>{{ i.numBlisters }}</td>
                         <td>{{i.deliveryPickupDate|date("m/d/Y")}}</td>
                         <td>{{i.nextDueDate|date("m/d/Y")}}</td>
-                        <td>{{i.isActive }}</td>
+                        <td>
+                            {% if i.isActive == 1 %}
+                                <p>Y</p>
+                            {% else %}
+                                <p>N</p>
+                            {% endif %}
+                        </td>
                         <td><a href="{{ path('medinfo_edit', { 'id': i.id }) }}" class="btn btn-info" role="button">Edit</a></td>
                     </tr>
                 {% endfor %}

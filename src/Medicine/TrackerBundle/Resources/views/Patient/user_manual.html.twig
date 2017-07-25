@@ -1,0 +1,78 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <div class="container-fluid">
+
+    <!-- Side Navigation Bar Starts -->
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-2">
+              <ul id="sidebar" class="nav nav-stacked">
+                <li>Table of Contents</li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#">Create Entry</a></li>
+                <li><a href="#">Active List</a></li>
+                <li><a href="#">Inactive List</a></li>
+                <li><a href="#">Search</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-10">
+        <div class="alert alert-success" role="alert">
+           <p><strong>Welcome to Patient Medication Tracker!</strong><br> This web application will assist you to keep track of patients who have received their medications. Please read below to understand more features of this application.</p>
+        </div>
+        
+        <div class="well" id="home">
+            <h2>Home</h2>
+            <p>This page displays all the patients that have been added to the system. This list shows patient <strong>Name</strong> and status of the entry: <strong>Active/Inactive</strong> in the order of addition to the system. The patient list is displayed in tabular form with "show" action next to each patient. The user could further view all the medication information by clicking show button for the specific patient.</p>
+        </div>
+
+        <h2>Active and Inactive Patients</h2>
+        <p>Active and Inactive Patients: In this system, any value entered always remain stored and could be retreived later for use. Thus, due to some reason, if a user has to be removed, in that case it is simply turned into inactive by turning off the checkmark for isActive. This will not display the patient. To display the patient again, simply turn isActve ON.</p>
+
+        <p> At the bottom of home page, Create a new entry button is present which allows user to add a new patient to the system.</p>
+
+        <h2> Show Button</h2>
+        <p> On the homepage, when user clicks Show button next to the specific patient, it re-directs the user to Patient Information page which gives a detailed information of all the medications for the patient. </p>
+
+        <div class="well">
+        <h2>Patient Information</h2>
+        <p>This page shows the complete detailed information of certain specified patient</p>
+        <p>The different fields are:
+            <ul>
+                <li>Prepared On</li>
+                <li>Number of Blisters</li>
+                <li>Delivered/Pick Up Date</li>
+                <li>Next Due On</li>
+                <li>Is Active</li>
+                <li>Edit Entry</li>
+            </ul>
+        </p>
+
+        <p> Furthermore, User could create a new medication entry here for the patient by clicking Add New Entry Button. This will redirect the user to a form with all the required fields needed for the patient entry</p>
+        </div>
+
+
+        <h2>Create Entry</h2>
+        <p>This page allows user to add a new patient to the tracking system. Enter the name of the patient and turn the is active "on" to keep your newly created patient visible. When satisfied with all the information, click "Back to the list" to go back to the index section.</p>
+
+        <div class="well">
+        <h2>Search By Name</h2>
+        <p>This page allows to search a patient by name.<br>IMPORTANT: Please enter full name of the patient to be found since I am still learning how to add search using keywords.</p>
+        <p>When the user clicks Search option after entering a value, the program displays a list of all the users with the name. Also, you could revert back to the index page by clicking "back to the list".</p>
+    </div>
+
+        <h2>Show Page</h2>
+        <p>When "show" button is selected from index page, the complete information about the user is displayed. Here, a new medication entry could be made by simply clicking "Add New Entry". Also, the patient name could be edited by clicking "Edit Patient Name".</p>
+
+        <a href="{{ path('patient') }}" class="btn btn-info" role="button">Back to the List</a>
+    </div>
+
+      </div>
+</div>
+</div>
+
+        <!-- Side Navigation Bar Ends -->
+        
+        
+
+{% endblock %}
