@@ -3,11 +3,10 @@
 
 {% block body -%}
 <div class="container-fluid">
-    	<h1 class="page-header">Edit Patient Information</h1>
-
-    	<div>
-    		{{ form(edit_form) }} {# {{ form(delete_form) }} #}
-    	</div>
+    	<h1>Edit Patient Information</h1>
+    	{{ form_start(edit_form) }}
+    	{{ form_widget(edit_form) }}
+    	{{ form_end(edit_form) }} {# {{ form(delete_form) }} #}
     	<div class="container">
     		<a href="{{ path('patient') }}" class="btn btn-info" role="button"> Back to the list </a>
     	</div>
