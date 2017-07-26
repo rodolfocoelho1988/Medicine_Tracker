@@ -372,7 +372,6 @@ class PatientController extends Controller
      */
     public function usermanualAction()
     {
-
         return array(
             'User'=>'Manual',
             );
