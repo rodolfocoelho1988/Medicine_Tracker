@@ -362,8 +362,7 @@ class PatientController extends Controller
             'isActive' => 0,
             );
     }
-
-
+  
     /**
      * Lists all Patient entities who are inactive
      *
@@ -373,9 +372,9 @@ class PatientController extends Controller
      */
     public function usermanualAction()
     {
-
         return array(
             'User'=>'Manual',
             );
     }
+
 }
