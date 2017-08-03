@@ -2,13 +2,17 @@
 
 {% block body -%}
     <div class="container-fluid">
-        <h1>Patient list</h1>
-        <table class="table" >
+        {% if isActive == 1 %}
+            <h1>Patient list<small> non-deleted patients</small></h1>
+        {% else %}
+            <h1>Patient list<small> deleted patients</small></h1>
+        {% endif %}
+        
+
+        <table class="table" > <!-- removed this class: record_tables  -->
             <thead>
                 <tr>
-                    <th>Patient Id</th>
                     <th>Name</th>
-                    <th>Is Active</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -16,15 +20,7 @@
             <tbody>
             {% for entity in entities %}
                 <tr>
-                    <td><a href="{{ path('patient_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                     <td>{{ entity.name }}</td>
-
-                    <td>{% if entity.isActive == 1 %}
-                            <p>Y</p>
-                        {% else %}
-                            <p>N</p>
-                        {% endif %}
-                    </td>
 
                     <td>
                         <a href="{{ path('patient_show', { 'id': entity.id }) }}" class="btn btn-info" role="button">show</a>
@@ -33,6 +29,7 @@
             {% endfor %}
             </tbody>
         </table>
-                <a href="{{ path('patient_new') }}" class="btn btn-info" role="button">Create a new entry</a>
+                <a href="{{ path('patient_search') }}" class="btn btn-info" role="button">Search</a>
+                <a href="{{ path('patient') }}" class="btn btn-info" role="button"> Back to the list</a>
     </div>
 {% endblock %}

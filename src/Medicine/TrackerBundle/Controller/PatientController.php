@@ -15,9 +15,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 
-
-
-
 /**
  * Patient controller.
  *
@@ -38,7 +35,6 @@ class PatientController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('MedicineTrackerBundle:Patient')->findAll();
-
 
         return array(
             'entities' => $entities, 
@@ -277,7 +273,7 @@ class PatientController extends Controller
 
             $em = $this->getDoctrine()->getManager();
             $repository = $em->getRepository('MedicineTrackerBundle:Patient');
-            $names = $repository->findByName($data['name']);
+            $names = $repository->findBy(array('name' => $data['name']));
 
             if(! $names)
             {            
@@ -305,4 +301,80 @@ class PatientController extends Controller
         ->getForm()
         ;
     }
+
+    /**
+     * Lists all Patient entities who are active
+     *
+     * @Route("/findby/active", name="patient_active")
+     * @Method("GET")
+     * @Template("MedicineTrackerBundle:Patient:find_active.html.twig")
+     */
+    public function findactiveAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('MedicineTrackerBundle:Patient')->findAll();
+
+        $count = 0;
+        $response_array = array();
+
+        foreach ($entities as $key => $value) {
+            if($value->getIsactive() == 1)
+            {
+                $response_array[$count] = $value;
+            }
+            $count++;
+        }
+
+        return array(
+            "entities" => $response_array,
+            'isActive' => 1,
+            );
+    }
+
+
+    /**
+     * Lists all Patient entities who are inactive
+     *
+     * @Route("/findby/inactive", name="patient_inactive")
+     * @Method("GET")
+     * @Template("MedicineTrackerBundle:Patient:find_active.html.twig")
+     */
+    public function findinactiveAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('MedicineTrackerBundle:Patient')->findAll();
+
+        $count = 0;
+        $response_array = array();
+
+        foreach ($entities as $key => $value) {
+            if($value->getIsactive() == 0)
+            {
+                $response_array[$count] = $value;
+            }
+            $count++;
+        }
+
+        return array(
+            "entities" => $response_array,
+            'isActive' => 0,
+            );
+    }
+  
+    /**
+     * Lists all Patient entities who are inactive
+     *
+     * @Route("/findby/manual", name="user_manual")
+     * @Method("GET")
+     * @Template("MedicineTrackerBundle:Patient:user_manual.html.twig")
+     */
+    public function usermanualAction()
+    {
+        return array(
+            'User'=>'Manual',
+            );
+    }
+
 }

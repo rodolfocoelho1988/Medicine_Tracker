@@ -1,7 +1,7 @@
 {# Making changes by editing fragments of code #}
 
 {# Widgets #}
-{%- block form_widget -%}
+{# {%- block form_widget -%}
 	<div class="jumbotron">
         {% if compound %}
             {{ block('form_widget_compound') }}
@@ -9,9 +9,9 @@
             {{ block('form_widget_simple') }}
         {% endif %}
     </div>
-{%- endblock form_widget -%}
+{%- endblock form_widget -%} #}
 
-{%- block form_widget_compound -%}
+{# {%- block form_widget_compound -%}
     <div {{ block('widget_container_attributes') }}>
         {%- if form.parent is empty -%}
             {{ form_errors(form) }}
@@ -43,8 +43,7 @@
 
 
 {# Text Area Widget #}
-{%- block textarea_widget -%}
+{# {%- block textarea_widget -%}
     <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
-{%- endblock textarea_widget -%}
-
+{%- endblock textarea_widget -%} #}
 
