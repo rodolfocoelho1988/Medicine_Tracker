@@ -1,13 +1,51 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <div class="container-fluid">
-        <h1>Patient Information</h1>
-        <h3>Name: {{entity.name}}</h3>
+<h1>Patient Information</h1>
+<h3>Name: {{entity.name}}</h3>
+<br>
 
-        
-        <table class="table"> <!-- removed this class: record_tables  -->
-            <tbody>
+<script>
+    var name = {{ entity.name | json_encode| raw }};
+    $(document).ready(function () {
+        $('#patientInfo').DataTable( {
+            "scrollY":        "300px",
+            "scrollCollapse": true,
+            "paging":         false,
+
+            dom: 'Bfrtip',
+            buttons: [
+                'copy',
+                {
+                    extend: 'pdfHtml5',
+                    title: "Patient Information: " + name,
+                    exportOptions: {
+                        columns: [0,1,2,3,4]
+                    }
+
+                },
+                {
+                    extend: 'csvHtml5',
+                    title: "Patient Information: " + name,
+                    exportOptions: {
+                        columns: [0,1,2,3,4]
+                    }
+                },
+                {
+                    extend: 'excelHtml5',
+                    title: "Patient Information: " + name,
+                    exportOptions: {
+                        columns: [0,1,2,3,4]
+                    }
+                }
+            ]
+        } );
+    });
+</script>
+
+    <div class="container-fluid">
+        <table class="table table-bordered" id="patientInfo"> <!-- removed this class: record_tables  -->
+            <thead>
                 <tr>
                     <th> Prepared On</th>
                     <th>Number of Blisters</th>
@@ -16,6 +54,9 @@
                     <th> Is Active </th>
                     <th> Edit Entry</th>
                 </tr>
+            </thead>
+            <tbody>
+
                 {% for i in medicines %}
                     <tr>
                         <td>{{i.preparedOn|date("m/d/Y")}}</td>

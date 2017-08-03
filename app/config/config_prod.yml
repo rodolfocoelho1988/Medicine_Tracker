@@ -23,3 +23,13 @@ monolog:
             level: debug
         console:
             type:  console
+
+swiftmailer:
+   transport:  %mailer_transport%
+   encryption: ssl
+   auth_mode: login
+   port:       %mailer_port%
+   host:       %mailer_host%
+   username:   %mailer_user%
+   password:   %mailer_password%
+   spool:     { type: memory }
