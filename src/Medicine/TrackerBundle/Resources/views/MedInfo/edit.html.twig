@@ -1,14 +1,16 @@
 {% extends '::base.html.twig' %}
-{% form_theme edit_form 'MedicineTrackerBundle:Form:ayush_test.html.twig' %}
+{% form_theme edit_form 'bootstrap_3_layout.html.twig' %}
+{#{% form_theme edit_form 'MedicineTrackerBundle:Form:ayush_test.html.twig' %}#}
 
 {% block body -%}
 	<div class="container-fluid">
     	<h1>Edit Patient Medication</h1>
 
-    		{{ form(edit_form) }} {# {{ form(delete_form) }} #}
+    		{{ form(edit_form) }}
 
     	<div class="container">
     		<a href="{{ path('patient') }}" class="btn btn-info" role="button" >Back to the Patient list</a>
     	</div>
 	</div>
 {% endblock %}
+

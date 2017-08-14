@@ -1,4 +1,17 @@
-made changes here --
+About the Software
+==================
+
+Welcome to Medication Tracker. This application allows user to track down the medication information about patients.
+The user could add, edit and remove patients and their medications. Also, the easy searching and ordering option helps to search information 
+about a certain patient at a substantially fast rate.
+
+Terms and Conditions of Use
+---------------------------
+I created this project as a way to test my knowledge of symfony and accompanying components.
+I would request not to copy paste any code without mentioning my repository as a source since I spent a lot of time to create this project.
+
+With that being said, you are welcome to view my code to get ideas for creating your own project. Enjoy!
+
 
 Symfony Standard Edition
 ========================

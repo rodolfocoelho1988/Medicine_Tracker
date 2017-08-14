@@ -13,26 +13,33 @@
                 <li><a href="#create_entry">Create Entry</a></li>
                 <li><a href="#active_list">Active List</a></li>
                 <li><a href="#inactive_list">Inactive List</a></li>
-                <li><a href="#search">Search</a></li>
-        </ul>
-      </div>
-    <div class="col-sm-10">
-        <div class="alert alert-success" role="alert">
-           <p><strong>Welcome to Patient Medication Tracker!</strong><br> This web application will assist you to keep track of patients who have received their medications. Please read below to understand more features of this application.</p>
-        </div>
+              </ul>
+          </div>
+            <div class="col-sm-10">
+                <div class="alert alert-success" role="alert">
+                    <p><strong>Welcome to Patient Medication Tracker!</strong><br> This web application will assist you to keep track of patients who have received their medications. Please read below to understand features of this application.</p>
+                </div>
         
         <div id="home">
             <h2>Home</h2>
             <p>This page displays all the patients that have been added to the system. This list shows patient <strong>Name</strong> and status of the entry: <strong>Active/Inactive</strong> in order of addition to the system. The patient list is displayed in tabular form with <a href="#" class="btn btn-info" role="button">show</a> action next to each patient. The user could further view all the medication information by clicking show button for the specific patient.</p>
+
+            <p>For easy search of patient, user could enter keywords in the search bar and it will narrow down the
+                list. Also, Medicine Tracker allows users to retrieve the patient information in pdf/ csv/ excel
+                form simply by clicking the buttons in the top left end above the list. </p>
+
+            <p> At the bottom of the page, user could create a new patient entry by clicking <a href="#" class="btn btn-info" role="button">Create a new entry</a>
+        </div>
+
+        <div class="alert alert-danger" role="alert">
+            <p><strong>Important!</strong><br> When creating a new patient, do not forget to check the "Is active"
+                option. This will allow patient to be visible on the home screen list.</p>
         </div>
         <hr>
 
         <div id="active_inactive_patients">
-            <h2>Active and Inactive Patients</h2>
-            <p>Active and Inactive Patients: This system strictly follows "no delete" rule on user level. Thus, any value entered always remain stored in the system and could be retreived at any time.</p>
-
-            <p> Therefore, to remove a user, follow this path: Show > Edit Patient Name > isActive off/on. This will simply prevent user from displaying in the system. This will not display the patient. To display the patient again, simply turn isActve ON.</p>
-            <p> At the bottom of home page, Create a new entry button is present which allows user to add a new patient to the system.</p>
+            <h2>Active/ Inactive Patients</h2>
+            <p>This system strictly follows "no delete" rule on user level. Thus, any value entered always remain stored and could be retrieved at any time. Therefore, to remove a user, follow this path: Show > Edit Patient Name > isActive off/on. This will simply prevent user from displaying in the system. This will not display the patient. To display the patient again, simply turn "Is Active" ON.</p>
         </div>
         <hr>
 
@@ -44,7 +51,7 @@
 
         <div id="patient_information">
             <h2>Patient Information</h2>
-            <p>This page shows the complete detailed information of certain specified patient</p>
+            <p>This page shows the detailed information of certain specified patient</p>
             <p>The different fields are:
                 <ul>
                     <li>Prepared On</li>
@@ -62,26 +69,19 @@
 
         <div id="create_entry">
             <h2>Create Entry</h2>
-            <p>This page allows user to add a new patient to the tracking system. Enter the name of the patient and turn the is active "on" to keep your newly created patient visible. When satisfied with all the information, click "Back to the list" to go back to the index section.</p>
+            <p>This page allows user to add a new patient to the tracking system. Enter the name of the patient and turn the is active "on" to keep your newly created patient visible. When satisfied with all the information, click "Back to the list" to go back to the home page.</p>
         </div>
         <hr>
 
         <div id="active_list">
             <h2>Active List</h2>
-            <p>This page displays a list of all the patients who have isActive turned ON.</p>
+            <p>This page displays a list of all the patients who have Is active turned ON.</p>
         </div>
         <hr>
 
         <div id="inactive_list">
             <h2>Inactive List</h2>
-            <p>This page displays a list of all the patients who have isActive turned OFF.</p>
-        </div>
-        <hr>
-
-        <div id="search">
-            <h2>Search</h2>
-            <p>This page allows to search a patient by name.<br><strong>IMPORTANT: Please enter full name of the patient to be found since I am still learning how to add search using keywords.</strong></p>
-            <p>When the user clicks Search option after entering a value, the program displays a list of all the users with the name. Also, you could revert back to the index page by clicking <a href="#" class="btn btn-info" role="button">Back To List</a></p>
+            <p>This page displays a list of all the patients who have Is Active turned OFF.</p>
         </div>
         <hr>
         </div>
