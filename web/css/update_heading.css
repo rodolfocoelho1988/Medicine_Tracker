@@ -1,0 +1,11 @@
+.heading{
+  background-color: #000000;
+}
+
+.heading > h1{
+  color: #ffffff;
+}
+
+@media (max-width: 767px) {
+
+}
